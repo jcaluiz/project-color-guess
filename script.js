@@ -68,7 +68,8 @@ function circulosDeCores() {
   let botaoResetar = document.querySelector('#reset-game');
 
   botaoResetar.addEventListener('click', function () {
-    verificaSeAcertouACor();
+    let answer = document.querySelector('#answer');
+    answer.innerText = 'Escolha uma cor';
     let rgbColor = document.querySelector('#rgb-color');
     rgbColor.innerText = gerarCor();
     section1Section2.style.backgroundColor = `rgb${gerarCor()}`;
@@ -119,8 +120,26 @@ function verificaSeAcertouACor() {
       } else {
         return answer.innerText = "Errou! Tente novamente!";
       }
-
     })
   }
+
+  function placar() {
+    let h3Placar = document.querySelector('#score');
+    let placar = 0;
+    h3Placar.innerText = 'Placar: ' + placar;
+    for (let index = 0; index < classBall.length; index += 1) {
+      classBall[index].addEventListener('click', function (event) {
+        if (event.target.style.backgroundColor === 'rgb' + idRgb.innerText) {
+          placar = placar + 3;
+          return h3Placar.innerText = 'Placar: ' + placar;
+        } else if (event.target.style.backgroundColor !== 'rgb' + idRgb.innerText && placar > 0) {
+          placar = placar - 1;
+          return h3Placar.innerText = 'Placar: ' + placar;
+        }
+      })
+    }
+  }
+
+  placar();
 }
 verificaSeAcertouACor()
