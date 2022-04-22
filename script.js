@@ -143,3 +143,14 @@ function verificaSeAcertouACor() {
   placar();
 }
 verificaSeAcertouACor()
+
+let ball = document.getElementsByClassName('ball');
+for(let index = 0; index < ball.length; index += 1) {
+    ball[index].addEventListener('mouseover', function() {
+      ball[index].style.border = '2px solid blue';
+    })
+    ball[index].addEventListener('mouseleave', function() {
+        ball[index].style.border = '1px solid black';
+      })
+  
+}

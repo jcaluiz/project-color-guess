@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(41, 33, 30);
+}
+
 .ball {
   border: 1px solid black;
   width: 40px;
@@ -5,4 +9,30 @@
   display: inline-block;
   border-radius: 100%;
   margin: 2px;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: azure;
+}
+
+#section2 {
+  display: flex;
+  justify-content: center;
+  left: 600px;
+  border: 1px groove black;
+  margin-left: 400px;
+  margin-right: 400px;
+  background-color: aquamarine;
+}
+
+#reset-game {
+  float: right;
+  margin-right: 510px;
+}
+
+button {
+  background-color: burlywood;
+  color: blueviolet;
+  font-size: large;
 }
