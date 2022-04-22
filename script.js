@@ -38,48 +38,89 @@ function circulosDeCores() {
   section2.appendChild(section6Section2);
   section6Section2.classList.add('ball');
 
-  let idRgb = document.querySelector('#rgb-color');
-  let index = parseInt(Math.random() * 6);
-  let string = 'section' + [index] + 'Section2';
 
   section1Section2.style.backgroundColor = `rgb${gerarCor()}`;
   section2Section2.style.backgroundColor = `rgb${gerarCor()}`;
   section3Section2.style.backgroundColor = `rgb${gerarCor()}`;
   section4Section2.style.backgroundColor = `rgb${gerarCor()}`;
   section5Section2.style.backgroundColor = `rgb${gerarCor()}`;
-  section6Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
-  
+  section6Section2.style.backgroundColor = `rgb${gerarCor()}`;
 
-  console.log(string)
+  let idRgb = document.querySelector('#rgb-color');
+  let index = parseInt(Math.random() * 6);
+  if (index < 1) {
+    index = parseInt(Math.random() * 6);
+  }
+  if (index === 1) {
+    section1Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+  } else if (index === 2) {
+    section2Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+  } else if (index === 3) {
+    section3Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+  } else if (index === 4) {
+    section4Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+  } else if (index === 5) {
+    section5Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+  } else if (index === 6) {
+    section6Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+  }
+
+  let botaoResetar = document.querySelector('#reset-game');
+
+  botaoResetar.addEventListener('click', function () {
+    verificaSeAcertouACor();
+    let rgbColor = document.querySelector('#rgb-color');
+    rgbColor.innerText = gerarCor();
+    section1Section2.style.backgroundColor = `rgb${gerarCor()}`;
+    section2Section2.style.backgroundColor = `rgb${gerarCor()}`;
+    section3Section2.style.backgroundColor = `rgb${gerarCor()}`;
+    section4Section2.style.backgroundColor = `rgb${gerarCor()}`;
+    section5Section2.style.backgroundColor = `rgb${gerarCor()}`;
+    section6Section2.style.backgroundColor = `rgb${gerarCor()}`;
+
+    let idRgb = document.querySelector('#rgb-color');
+    let index = parseInt(Math.random() * 6);
+    if (index < 1) {
+      index = parseInt(Math.random() * 6);
+    }
+    if (index === 1) {
+      section1Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+    } else if (index === 2) {
+      section2Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+    } else if (index === 3) {
+      section3Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+    } else if (index === 4) {
+      section4Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+    } else if (index === 5) {
+      section5Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+    } else if (index === 6) {
+      section6Section2.style.backgroundColor = `rgb${idRgb.innerText}`;
+    }
+    console.log(index)
+  })
+
 }
 circulosDeCores();
 
-let section3 = document.querySelector('#section3');
-let h2Section3 = document.createElement('h2');
-section3.appendChild(h2Section3);
-h2Section3.setAttribute('id', 'answer');
-let answer = document.querySelector('#answer');
-answer.innerText = 'Escolha uma cor';
-let idRgb = document.querySelector('#rgb-color');
-const classBall = document.getElementsByClassName('ball');
+function verificaSeAcertouACor() {
+  let section3 = document.querySelector('#section3');
+  let h2Section3 = document.createElement('h2');
+  section3.appendChild(h2Section3);
+  h2Section3.setAttribute('id', 'answer');
+  let answer = document.querySelector('#answer');
+  answer.innerText = 'Escolha uma cor';
+  let idRgb = document.querySelector('#rgb-color');
+  const classBall = document.getElementsByClassName('ball');
 
-for (let index = 0; index < classBall.length; index += 1) {
-  classBall[index].addEventListener('click', function (event) {
-    // classBall.target.classList.remove('choice');
-    // event.target.classList.add('choice');
+  for (let index = 0; index < classBall.length; index += 1) {
+    classBall[index].addEventListener('click', function (event) {
+      if (event.target.style.backgroundColor === 'rgb' + idRgb.innerText) {
+        return answer.innerText = "Acertou!";
+      } else {
+        return answer.innerText = "Errou! Tente novamente!";
+      }
 
-    if (event.target.style.backgroundColor === 'rgb' + idRgb.innerText) {
-      return answer.innerText = "Acertou!";
-    } else {
-      return answer.innerText = "Errou! Tente novamente!";
-    }
-
-  })
+    })
+  }
 }
-
-
-// let classBall = document.getElementsByName('ball');
-
-// classBall.addEventListener('click', function() {
-//     classBall.setAttribute('id', 'answer');
-// })
+verificaSeAcertouACor()
